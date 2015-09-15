@@ -15,7 +15,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 
 	// creamos los componentes y los inicializamos
 	private static final long serialVersionUID = 1L;
-	private static String version = "v1.1.0";
+	private static String version = "v1.1.1";
 	private JLabel indicacion = new JLabel();
 	private JTextField palabra = new JTextField();;
 	private JButton ejecutar = new JButton("Ejecutar");
@@ -24,6 +24,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 	private JButton salir = new JButton("Salir");;
 	private JLabel labelVersion = new JLabel();
 	private JButton limpiar = new JButton("Limpiar");
+	private JLabel autor = new JLabel("by Hernán Velásquez | hernandvo@gmail.com");
 
 	public Ventana() {
 		super();
@@ -34,7 +35,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 	}
 
 	private void configurarVentana() {
-		this.setTitle("Palindromos | by Hernán Velásquez");
+		this.setTitle("Palindromos");
 		this.setSize(600, 360);
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
@@ -58,9 +59,12 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 		areaTexto.setEditable(false);
 		salir.setBounds(480, 260, 100, 30);
 		salir.setToolTipText("Presione para salir");
-		labelVersion.setBounds(560, 320, 40, 10);
+		labelVersion.setBounds(565, 320, 40, 10);
 		labelVersion.setText(version);
+		labelVersion.setFont(new java.awt.Font("Tahoma", 0, 10));
 		limpiar.setBounds(20, 260, 100, 30);
+		autor.setBounds(2, 320, 300, 10);
+		autor.setFont(new java.awt.Font("Tahoma", 0, 10));
 		salir.addActionListener(this);
 		ejecutar.addActionListener(this);
 		limpiar.addActionListener(this);
@@ -74,6 +78,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 		this.add(salir);
 		this.add(labelVersion);
 		this.add(limpiar);
+		this.add(autor);
 	}
 
 	public void actionPerformed(ActionEvent e) {
