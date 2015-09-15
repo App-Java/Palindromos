@@ -13,15 +13,17 @@ import javax.swing.JTextField;
 
 public class Ventana extends javax.swing.JFrame implements ActionListener {
 
+	// creamos los componentes y los inicializamos
 	private static final long serialVersionUID = 1L;
-	private static String version = "v1.0";
+	private static String version = "v1.1.0";
 	private JLabel indicacion = new JLabel();
 	private JTextField palabra = new JTextField();;
 	private JButton ejecutar = new JButton("Ejecutar");
-	private JTextField resultado;
-	private JTextArea areaTexto;
-	private JButton salir;
+	private JTextField resultado = new JTextField();;
+	private JTextArea areaTexto = new JTextArea();;
+	private JButton salir = new JButton("Salir");;
 	private JLabel labelVersion = new JLabel();
+	private JButton limpiar = new JButton("Limpiar");
 
 	public Ventana() {
 		super();
@@ -41,13 +43,9 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 	}
 
 	private void inicializarComponentes() {
-		// creamos los componentes
-		resultado = new JTextField();
-		areaTexto = new JTextArea();
-		salir = new JButton("Salir");
 
 		// configuramos los componentes
-		indicacion.setText("Ingrese una palabra para escribirla invertida y decir si es palindromo o no.");
+		indicacion.setText("Ingrese una palabra para escribirla invertida y decir si es palíndromo o no.");
 		indicacion.setBounds(20, 20, 560, 40);
 		indicacion.setFont(new java.awt.Font("Tahoma", 0, 17));
 		palabra.setBounds(200, 80, 200, 30);
@@ -59,11 +57,13 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 		areaTexto.setBounds(200, 230, 200, 50);
 		areaTexto.setEditable(false);
 		salir.setBounds(480, 260, 100, 30);
+		salir.setToolTipText("Presione para salir");
+		labelVersion.setBounds(560, 320, 40, 10);
+		labelVersion.setText(version);
+		limpiar.setBounds(20, 260, 100, 30);
 		salir.addActionListener(this);
 		ejecutar.addActionListener(this);
-		salir.setToolTipText("Presione para salir");
-		labelVersion.setBounds(270, 320, 30, 10);
-		labelVersion.setText(version);
+		limpiar.addActionListener(this);
 
 		// adicionamos los componentes a la ventana
 		this.add(indicacion);
@@ -73,20 +73,24 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 		this.add(areaTexto);
 		this.add(salir);
 		this.add(labelVersion);
+		this.add(limpiar);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Ejecutar")) {
+		if (e.getActionCommand().equals("Limpiar")) { // Metodos del boton Limpiar
+			limpiar();
+		}
+		if (e.getActionCommand().equals("Salir")) { // Metodos del boton Salir
+			JOptionPane.showMessageDialog(this, "Gracias por usar este programa.");
+			System.exit(DISPOSE_ON_CLOSE);
+		}
+		if (e.getActionCommand().equals("Ejecutar")) { // Metodos del boton Ejecutar
 			if (palabra.getText().length() == 0) {
-				JOptionPane
-						.showMessageDialog(this,
-								"Debe ingresar almenos una palabra en la caja de texto.");
-				resultado.setText(null);
-				areaTexto.setText(null);
+				JOptionPane.showMessageDialog(this, "Debe ingresar almenos una palabra en la caja de texto.");
+				limpiar();
 			} else {
 				String cadenaInvertida = invertirCadena(palabra.getText());
-				boolean isPalindromo = verificarPalindromo(palabra.getText()
-						.toUpperCase());
+				boolean isPalindromo = verificarPalindromo(palabra.getText().toUpperCase());
 				areaTexto.setText(cadenaInvertida);
 				if (isPalindromo) {
 					resultado.setText("SI es palindromo.");
@@ -95,17 +99,18 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 				}
 			}
 		}
-		if (e.getActionCommand().equals("Salir")) {
-			JOptionPane.showMessageDialog(this,
-					"Gracias por usar este programa.");
-			System.exit(DISPOSE_ON_CLOSE);
-		}
 
 	}
 
+	private void limpiar() {
+		resultado.setText(null);
+		areaTexto.setText(null);
+		palabra.setText(null);
+		palabra.requestFocus();
+	}
+
 	private void saludar() {
-		JOptionPane.showMessageDialog(this, "Bienvenido\n"
-				+ "Hoy es un gran día" + ".");
+		JOptionPane.showMessageDialog(this, "Bienvenido.\n" + "Hoy es un gran día" + "!");
 	}
 
 	private String invertirCadena(String text) {
