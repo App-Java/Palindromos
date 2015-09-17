@@ -17,11 +17,11 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private static String version = "v1.1.2";
 	private JLabel indicacion = new JLabel();
-	private JTextField palabra = new JTextField();;
+	private JTextField palabra = new JTextField();
 	private JButton ejecutar = new JButton("Ejecutar");
-	private JTextField resultado = new JTextField();;
-	private JTextArea areaTexto = new JTextArea();;
-	private JButton salir = new JButton("Salir");;
+	private JTextField resultado = new JTextField();
+	private JTextArea areaTexto = new JTextArea();
+	private JButton salir = new JButton("Salir");
 	private JLabel labelVersion = new JLabel();
 	private JButton limpiar = new JButton("Limpiar");
 	private JLabel autor = new JLabel("by Hernán Velásquez | hernandvo@gmail.com");
