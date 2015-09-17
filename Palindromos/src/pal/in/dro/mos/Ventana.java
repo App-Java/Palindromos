@@ -15,7 +15,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 
 	// creamos los componentes y los inicializamos
 	private static final long serialVersionUID = 1L;
-	private static String version = "v1.1.1";
+	private static String version = "v1.1.2";
 	private JLabel indicacion = new JLabel();
 	private JTextField palabra = new JTextField();;
 	private JButton ejecutar = new JButton("Ejecutar");
@@ -104,7 +104,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 				}
 			}
 		}
-
+		palabra.requestFocus();
 	}
 
 	private void limpiar() {
@@ -115,7 +115,7 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 	}
 
 	private void saludar() {
-		JOptionPane.showMessageDialog(this, "Bienvenido.\n" + "Hoy es un gran día" + "!");
+		JOptionPane.showMessageDialog(this, "Bienvenido(a).\n" + "Hoy es un gran día" + "!");
 	}
 
 	private String invertirCadena(String text) {
