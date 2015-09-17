@@ -98,9 +98,9 @@ public class Ventana extends javax.swing.JFrame implements ActionListener {
 				boolean isPalindromo = verificarPalindromo(palabra.getText().toUpperCase());
 				areaTexto.setText(cadenaInvertida);
 				if (isPalindromo) {
-					resultado.setText("SI es palindromo.");
+					resultado.setText("SI es palíndromo.");
 				} else {
-					resultado.setText("NO es palindromo.");
+					resultado.setText("NO es palíndromo.");
 				}
 			}
 		}
